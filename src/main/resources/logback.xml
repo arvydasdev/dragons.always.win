@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d %-5p %C{1}:%L - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="EMLOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/mugloar.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>logs/mugloar-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>50MB</maxFileSize>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d %-5p %C{1}:%L - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.dragon.mugloar" level="INFO">
+        <appender-ref ref="EMLOG"/>
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>

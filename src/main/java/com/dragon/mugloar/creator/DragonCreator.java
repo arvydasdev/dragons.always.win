@@ -17,4 +17,10 @@ public interface DragonCreator {
      * @return dragon to fight a knight
      */
     Dragon createDragon(Knight knight);
+
+    /**
+     * If dragon is ready to fight according to provided weather
+     * @return true/false
+     */
+    boolean appliedForWeather(String weatherCode);
 }

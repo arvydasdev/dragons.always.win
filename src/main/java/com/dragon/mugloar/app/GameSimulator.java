@@ -51,12 +51,6 @@ public class GameSimulator {
 
                 //getting weather
                 WeatherReport weatherReport = gameApiClient.getWeather(gameId);
-                if ("SRO".equals(weatherReport.getCode())) {
-                    LOG.info(MessageFormat.format("Generating game {0} failed because of storm", fightCounter));
-                    //lets not fight in storm cause we will die
-                    continue;
-                }
-
                 Dragon dragon = dragonCreatorFactory.getDragonCreator(weatherReport).createDragon(game.getKnight());
                 //getting fight result
                 FightStatus status = gameApiClient.putSolution(gameId, dragon);

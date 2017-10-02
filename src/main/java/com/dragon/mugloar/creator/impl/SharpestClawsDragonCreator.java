@@ -16,6 +16,10 @@ public class SharpestClawsDragonCreator implements DragonCreator {
 
     private static final Logger LOG = LoggerFactory.getLogger(SharpestClawsDragonCreator.class);
 
+    public boolean appliedForWeather(String weatherCode) {
+        return "HVA".equals(weatherCode);
+    }
+
     public Dragon createDragon(Knight knight) {
         Dragon dragon = new Dragon();
         dragon.setClawSharpness(10);

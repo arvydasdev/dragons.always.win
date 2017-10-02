@@ -16,6 +16,10 @@ public class ZenDragonCreator implements DragonCreator {
 
     private static final Logger LOG = LoggerFactory.getLogger(ZenDragonCreator.class);
 
+    public boolean appliedForWeather(String weatherCode) {
+        return "FUNDEFINEDG".equals(weatherCode) || "T E".equals(weatherCode);
+    }
+
     public Dragon createDragon(Knight knight) {
         Dragon dragon = new Dragon();
         dragon.setScaleThickness(5);

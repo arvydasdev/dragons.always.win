@@ -10,6 +10,7 @@ import java.util.List;
 
 /**
  * Generates fights statistics to spring shell ascii table
+ *
  * @author gusciarv
  */
 @Component
@@ -17,6 +18,7 @@ public class StatisticsGenerator {
 
     /**
      * Converts fight result list into spring shell ascii table
+     *
      * @param fightStatistics - list of fight results
      * @return table presenting fight results
      */
@@ -25,7 +27,8 @@ public class StatisticsGenerator {
         buildRow(tableModelBuilder, "Fight id", "Status", "Weather", "Knight skills", "Dragon skills");
 
         for (FightStatistics fight : fightStatistics) {
-            buildRow(tableModelBuilder, Integer.toString(fightStatistics.indexOf(fight) + 1), fight.getFightStatus().getStatus(), fight.getWeatherReport().getCode(), fight.getKnight().toString(), fight.getDragon().toString());
+            buildRow(tableModelBuilder, fightStatistics.indexOf(fight) + 1, fight.getFightStatus().getStatus(),
+                    fight.getWeatherReport().getCode(), fight.getKnight(), fight.getDragon());
         }
 
         TableBuilder tableBuilder = new TableBuilder(tableModelBuilder.build());
@@ -33,10 +36,10 @@ public class StatisticsGenerator {
         return tableBuilder.build();
     }
 
-    private void buildRow(TableModelBuilder<String> tableModelBuilder, String... rowValue) {
+    private void buildRow(TableModelBuilder<String> tableModelBuilder, Object... rowValue) {
         tableModelBuilder.addRow();
-        for (String value : rowValue) {
-            tableModelBuilder.addValue(value);
+        for (Object value : rowValue) {
+            tableModelBuilder.addValue(value != null ? value.toString() : null);
         }
     }
 

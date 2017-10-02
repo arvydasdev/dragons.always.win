@@ -3,6 +3,7 @@ package com.dragon.mugloar.client;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 
 /**
@@ -38,6 +39,7 @@ class ResponseHandler {
                 break;
             default:
                 LOG.error("Response status: {}. Response body: {}", response.getStatus(), response.readEntity(String.class));
+                throw new WebApplicationException("exception calling game api");
         }
         return parseResponse;
     }

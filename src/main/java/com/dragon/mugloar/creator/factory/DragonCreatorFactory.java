@@ -47,8 +47,8 @@ public class DragonCreatorFactory {
                 return sharpestClawsDragonCreator;
             }
             //long dry, fog
-            case "T E" :
-            case "SRO" : {
+            case "FUNDEFINEDG" :
+            case "T E" : {
                 return zenDragonCreator;
             }
             default : {

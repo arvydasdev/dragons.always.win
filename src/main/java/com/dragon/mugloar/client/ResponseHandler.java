@@ -29,19 +29,14 @@ class ResponseHandler {
     }
 
     private static boolean handleStatus(Response response) {
-        boolean parseResponse = false;
         switch (response.getStatus()) {
-            case 200:
-                parseResponse = true;
-                break;
-            case 204:
-                LOG.info("Service executed successfully without content in the response body");
-                break;
-            default:
+            case 200 : {
+                return true;
+            }
+            default: {
                 LOG.error("Response status: {}. Response body: {}", response.getStatus(), response.readEntity(String.class));
                 throw new WebApplicationException("exception calling game api");
+            }
         }
-        return parseResponse;
     }
-
 }

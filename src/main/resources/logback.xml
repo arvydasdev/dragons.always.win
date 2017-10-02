@@ -7,7 +7,7 @@
         </encoder>
     </appender>
 
-    <appender name="EMLOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <appender name="MUGLOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>logs/mugloar.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <fileNamePattern>logs/mugloar-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
@@ -19,7 +19,7 @@
     </appender>
 
     <logger name="com.dragon.mugloar" level="INFO">
-        <appender-ref ref="EMLOG"/>
+        <appender-ref ref="MUGLOG"/>
     </logger>
 
     <root level="INFO">

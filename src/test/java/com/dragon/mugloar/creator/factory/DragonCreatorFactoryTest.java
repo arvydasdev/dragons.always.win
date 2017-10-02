@@ -46,7 +46,7 @@ public class DragonCreatorFactoryTest {
     @Test(expected = IllegalArgumentException.class)
     public void testExceptionWhenWeatherCodeNotRecognized() {
         WeatherReport report = new WeatherReport();
-        report.setCode("FUNDEFINEDG");
+        report.setCode("SRO");
         dragonCreatorFactory.getDragonCreator(report);
     }
 }

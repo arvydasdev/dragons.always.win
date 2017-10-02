@@ -6,7 +6,6 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 
 import static org.mockito.ArgumentMatchers.eq;
@@ -33,7 +32,7 @@ public class ResponseHandlerTest {
         ResponseHandler.handleResponse(response, Game.class);
     }
 
-    @Test(expected = WebApplicationException.class)
+    @Test(expected = RuntimeException.class)
     public void testBadResponse() {
         when(response.getStatus()).thenReturn(400);
         ResponseHandler.handleResponse(response, Game.class);

@@ -20,6 +20,10 @@ public class NormalDragonCreator implements DragonCreator {
 
     private static final Logger LOG = LoggerFactory.getLogger(NormalDragonCreator.class);
 
+    public boolean appliedForWeather(String weatherCode) {
+        return "NMR".equals(weatherCode);
+    }
+
     public Dragon createDragon(Knight knight) {
         List<Pair<String,Integer>> skills = new ArrayList<>();
         skills.add(new Pair<>("ATTACK", knight.getAttack()));

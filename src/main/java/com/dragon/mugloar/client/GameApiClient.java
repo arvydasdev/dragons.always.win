@@ -8,6 +8,7 @@ import com.dragon.mugloar.client.dto.Dragon;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import org.glassfish.jersey.client.ClientProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -74,11 +75,15 @@ public class GameApiClient {
      * @return fight result telling if fight was successful or not
      */
     public FightStatus putSolution(String gameId, Dragon dragon) throws JsonProcessingException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.configure(SerializationFeature.WRAP_ROOT_VALUE, true);
-        String input = objectMapper.writeValueAsString(dragon);
+        String input = null;
+        if (dragon != null) {
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.configure(SerializationFeature.WRAP_ROOT_VALUE, true);
+            input = objectMapper.writeValueAsString(dragon);
+        }
 
         Client client = ClientBuilder.newClient();
+        client.property(ClientProperties.SUPPRESS_HTTP_COMPLIANCE_VALIDATION, true);
         WebTarget webTarget = client.target(MUGLOAR_PATH);
         Invocation.Builder invocationBuilder = webTarget.path("api/game").path(gameId).path("solution").request(MediaType.APPLICATION_JSON);
 

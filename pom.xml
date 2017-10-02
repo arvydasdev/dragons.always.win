@@ -22,7 +22,7 @@
 	</properties>
 
 	<dependencyManagement>
-        <dependencies>
+		<dependencies>
 			<!-- comes with spring boot, we just change the version -->
 			<dependency>
 				<groupId>ch.qos.logback</groupId>
